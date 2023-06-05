@@ -1,24 +1,44 @@
 Different features of Camunda:
+Features - How is it implemented
+1. Process Modeling and Automation - define process, variables, deploy, monitor and tune.
 
-1. Process Modeling and Automation
-2. Decision Automation
-3. Integration and Orchestration
-4. Scalability and Performance
-5. Monitoring and Analytics
-6. Extensibility and Customization
-7. Human Task Management
-8. Event-Driven Architecture
-9. Rule Engine Integration
-10. Version Control and Deployment
-11. Error Handling and Exception Management
+2. Decision Automation - define dmn (input/outout/rules), deploy, monitor and tune.
+
+3. Integration and Orchestration - service task/communications, monitor and analyze, heat map.
+
+4. Scalability and Performance - loadbalancing, clustering, asynchronous processing, external task pattern, distributed caching, message queue, lazy loading, auto scaling.
+
+5. Monitoring and Analytics - cockpit gui allows monitoring, real time insights, analyze metrics and KPI's.
+
+6. Extensibility and Customization - custom extensions, plugins, 3rd party libraries, custom UI, custom forms, event based execution points, community ecosystem.
+
+7. Human Task Management - task modelling,assignment, forms, lifecycle mgmt, prioritization, escalation, 
+notification, collaboration, tracking, history, audit trails.
+
+8. Event-Driven Architecture - event definition, event subprocess, event based gateways, message evets, signal/timer/external events.
+
+9. Rule Engine Integration - integrate into the process using decision task, or using it directly. dynamic update and modify, changes can be made independently.
+
+10. Version Control and Deployment - dmn versioning, bpmn versioning.
+
+11. Error Handling and Exception Management - error events, boundary error events, error event subprocess, task for resolution, retry, escalation, compensation activities.
+
 12. Workflow Execution Engine
-13. User and Group Management
-14. Task Assignments and Escalations
-15. Multi-Tenancy Support
+
+13. User and Group Management - define users/groups, authentication support via LDAP/AD/custom auth providers. ACL and permission, assignment and escalation, profile mgmt, task filters, programatic access.
+
+14. Task Assignments and Escalations - task assignment expression, claiming, delegation, notification, escalation, history and audit trails.
+ 
+15. Multi-Tenancy Support - tenant isolation, tenant specific definition, data seperation, tenant context and identity, authentication/autharization, tenant specific UI/deployments/onboarding/provisioning.
+
 16. Process Instance Tracking and Tracing
+
 17. Workflow History and Audit Trails
-18. Dynamic Forms and User Interfaces
-19. Workflow Collaboration and Communication
+
+18. Dynamic Forms and User Interfaces - allows to define tempalte using html/js/css, form variables, field visibility/editability, data binding, dynamic validation, form rendering option, form versioning.
+
+19. Workflow Collaboration and Communication - 
+
 20. Business Activity Monitoring
 21. Adaptive Case Management
 22. Mobile and Remote Task Management
