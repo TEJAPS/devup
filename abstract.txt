@@ -1,29 +1,58 @@
 Title:
-Description:
+------
+Revolutionizing Fraud Case Management: Automation and Enhanced Decision-making with Camunda
+
+Description: 
+------------
+Discover how automating manual review processes and decision-making in fraud case management reduces the review time and boosts efficiency. Explore how Camunda provides comprehensive visibility, robust error handling, and seamless integration with external services, transforming operations and setting the stage for growth.
+
 Abstract:
+---------
+Part1:
 Issues with current system:
 The manual fraud review process by operations has multiple steps and it takes around 6 to 10 mins to review each transaction
 Need a better queue management for ops team to prioritise and work on alerts
 Volumes are forecasted to grow each year and ops team is unable to complete the review for entire volume
 Less visibility into the work progress and queue penetration
 
+Part2:
+Difficulty in introducing new changes
+Downtime for introducing new changes
+
+Part3:
+Time gap between action disposition vs communicating the same to dependency teams.
 
 Solution:
+---------
+Part1:
 Automate the manual workflow steps like to enrich, take certain actions
 Automate the decision process , listing out the red flags and recommend the decision
 Refer to notes generator they currently use
 
+Part2:
+Customized log level details as per application need - Audit level, Info level
+Online BPMN Migration - 0 downtime
+Online DMN Migration - 0 downtime
+Can be handled by the client without developer's intervention - Easy to understand, adapt and modify.
+Inbuilt retry mechanisms, and 
+
+Part3:
+When few actions are taken and informed to downstreams but the actions are not required anymore - compensatory activities for rollback.
 
 
 
 Details:
+--------
 Identify the workflows:  Analyse and identify the current manual steps, decision points and actions involved in working a fraud case manually by ops team. Some of the activities like Customer profiling - reviewing the customer details, account and transaction history and online activity, and in some cases recipient profiling. All of these information can be prefetched and to decisions some of the activities as red flags. Actions like restrict, block profile, hold, release , letters, customer contact.
 Model the BPMN workflow: work  with business to document the various workflow steps
 Configure workflow execution:  orchestrate the workflow with connectors to the APIs, micro services, user tasks
 Handle user tasks:
 Implement Automated Activities: Automate certain activities in fraud case review like data enrichment, determine the red flags, integrate with external services for actions like customer contact/restrict/block/hold based on the outcome of the decision. These are implemented in Camunda as service tasks.
 Handle Decision Making:
-Monitor and Track workflow: Camunda provides a monitoring and tracking interface to monitor the execution of workflows and track the progress of individual cases. You can use the Camunda Cockpit application to visualize the workflow instances, check their status, and analyze performance metrics. Additionally, Camunda generates historical data and audit trails, allowing you to analyze the workflow's execution, identify bottlenecks, and optimize the process over time
-Handle exceptions and retries: During the execution of the fraud case management workflow, exceptions or errors may occur. Camunda provides mechanisms to handle these scenarios. For example, if an error occurs during an automated activity, Camunda can retry the activity a certain number of times before raising an exception. You can configure error handling, retries, and escalation mechanisms within the workflow to ensure robustness. 
+Monitor and Track workflow: Camunda provides a monitoring and tracking interface to monitor the execution of workflows and track the progress of individual cases. You can use the Camunda Cockpit application to visualize the workflow instances, check their status, and analyze performance metrics.
+Additionally, Camunda generates historical data and audit trails, allowing you to analyze the workflow's execution, identify bottlenecks, and optimize the process over time
+Handle exceptions and retries: During the execution of the fraud case management workflow, exceptions or errors may occur. Camunda provides mechanisms to handle these scenarios.
+For example, if an error occurs during an automated activity, Camunda can retry the activity a certain number of times before raising an exception. You can configure error handling, retries, and escalation mechanisms within the workflow to ensure robustness.
+
 
 
