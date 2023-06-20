@@ -1,18 +1,27 @@
 Title:
 ------
-Revolutionizing Fraud Case Management: Automation and Enhanced Decision-making with Camunda
+Transform Fraud Case Management: Automation, Orchestration and Enhanced Decisioning with Camunda
+
+alternate Title- 2:  Transform Fraud Case Management: Power of process orchestration
 
 Description: 
 ------------
-Discover how automating manual review processes and decision-making in fraud case management reduces the review time and boosts efficiency. Explore how Camunda provides comprehensive visibility, robust error handling, and seamless integration with external services, transforming operations and setting the stage for growth.
+Discover how orchestrating the business processes, automating manual review tasks, and decisioning in fraud case management reduces the review time and boosts operational efficiency and reduce fraud losses. Explore how Camunda provides scability, comprehensive visibility/monitoring, robust error handling, and seamless integration with external services/user tasks, transforming operations and streamlined architecture.
 
 Abstract:
 ---------
+The main challenges with Fraud Case management system, the complex system with tightly coupled components lacking scability and flexibility to introduce new changes. It is operations centric manual review process and time consuming and not efficient to manage, prioritize and work on fraud cases, and lacking observibility and complex tracking of the business processes. One of the business objective is to reduce the net operations fraud losses by reducing review time and improving operational efficiency. Camunda solves these challenges with orchestrating the business processes and automating some of the manual review tasks and providing the recommended decision to the specialists making the review process efficient.
+
+
+
+
+
+
 Part1:
 Issues with current system:
 The manual fraud review process by operations has multiple steps and it takes around 6 to 10 mins to review each transaction
 Need a better queue management for ops team to prioritise and work on alerts
-Volumes are forecasted to grow each year and ops team is unable to complete the review for entire volume
+Volumes are forecasted to grow each year and ops team is unable to complete the review for entire volume and Managing the net operating fraud losses
 Less visibility into the work progress and queue penetration
 
 Part2:
