@@ -33,3 +33,37 @@ Additionally, Camunda generates historical data and audit trails, allowing you t
 Handle exceptions and retries: During the execution of the fraud case management workflow, exceptions or errors may occur. Camunda provides mechanisms to handle these scenarios.
 For example, if an error occurs during an automated activity, Camunda can retry the activity a certain number of times before raising an exception. You can configure error handling, retries, and escalation mechanisms within the workflow to ensure robustness.
 
+Monitor and Track workflow:
+1. Cockpit provides web based monitoring and real time insights into instances, tasks, performance with visualization.
+2. Process Instance Monitoring: Allows us each request level monitoring, track state transitions, and other relevant metrics.
+3. Its RestApi's can be used to feed data into Firm's kibana and Grafana dashboard.
+4. Its Healtmap graphs allows us to identify bottlenecks and parts of workflows which has scope of improvements.
+
+Handle exceptions and retries:
+1. Camunda allows us to define boundary error events on task level, process level.
+2. We can configure our params for timeouts, retries, escalations, and custom error handling logic.
+3. Compensation Events: Handle Exceptional and Transaction events compesation feature helps us with rollbacks.
+4. Custom Exception Handling Logic can be defined as well.
+
+Scaling with Camunda:
+1. Horizontal Scaling and Load Balancing: supports distributed environment where instances of camunda can be deployed onto multiple instances.
+2. Asynchronous Processing: Long running or resource intensive tasks are performed outside the scope of workflow, offloading such works to external tasks, you can ensure that the workflow engine remains available.
+3. External task pattern: This allows to delegate task to external worker services, which can be independently scaled allowing us to do scaling at task level as well.
+4. Clustering: Allowing you to set up a cluster of Camunda engines that work together to process workflow instances. Clustering provides high availability and fault tolerance by ensuring that workflow instances can be picked up and processed by any available engine within the cluster.
+5. Distributed Caching: with this load on database can be reduced and response time can be improved.
+6. Database Scaling: sharding, replication can help us with camunda database scaling.
+7. Performance tuning: Camunda exposes various parameters related to thread pools, database connections, query optimization and such which can help with the tuning of performance.
+
+Resiliency with Camunda:
+1. Fault Tolerance: Events like Boundary error, Error catch, and exception handling ensures that recovery of process happens smoothly.
+2. Deadlines and Escalation: We can utilise paths in the workflow for defining escalations, SLA's
+3. Asynchronous Programming
+4. Clustering
+5. Monitoring and Alerting
+6. Disaster Recovery
+
+
+Individual Value:
+Explore how to automate manual review tasks and leverage decisioning capabilities to reduce review time significantly.
+Utilising camunda for boosting operational efficiency.
+Seamlessly integrate multiple processes by orchestrating the workflow.
