@@ -10,58 +10,26 @@ Discover how orchestrating the business processes, automating manual review task
 
 Abstract:
 ---------
-The main challenges with Fraud Case management system, the complex system with tightly coupled components lacking scability and flexibility to introduce new changes. It is operations centric manual review process and time consuming and not efficient to manage, prioritize and work on fraud cases, and lacking observibility and complex tracking of the business processes. One of the business objective is to reduce the net operations fraud losses by reducing review time and improving operational efficiency. Camunda solves these challenges with orchestrating the business processes and automating some of the manual review tasks and providing the recommended decision to the specialists making the review process efficient.
+The main challenges with Fraud Case management system, the complex system with tightly coupled components lacking scability and flexibility to introduce new changes. It is operations centric manual review process and time consuming and not efficient to manage, prioritize the work on fraud review cases, and lacking observibility and complex tracking of the business processes with upstream and downstream process flows. One of the business objective is to reduce the net operating fraud loss by improving operational efficiency. 
+Camunda solves these challenges with orchestrating the business processes and automating some of the manual review tasks and providing the recommended decision to the specialists making the review process efficient.
+
+Utilizing Camunda capabilities, the steps involved in modeling the fraud prevention review workflows: 
+1) Identifying the existing fraud prevention review process steps, manual review tasks, decision points, activities and downstream processes involved. This will serve as the basis for creating the BPMN workflows in Camunda. 
+2) Design the workflows in collabration with business team with identified activites. 
+For example,creation of fraud review case, data enrichment, determine the red flags and recommend the decision factors, decisioning and followup actions.
+3) Automating the manual activities in the review process improving the user productivity like data enrichment/pattern analysis and decision factors, these are integrated in the workflow as service tasks.
+4) The decision engine within Camunda evaluates the rules and conditions to determine the appropriate course of action. Using the DMN engine to evaluate and provide recommended decisions to the specialists in review process, this step is integrated into the workflow. 
+5) There are activities in the workflows that require operations review for making decisions, Camunda provides a task management system to handle these user tasks. 
+When a user task is encountered in the workflow, Camunda assigns it to a specific user or group. The assigned user can access the task through the Camunda Tasklist application or a custom user interface. creating a custom user interface to interact with the workflow and handle user tasks. Once the task is completed, the workflow progresses to the next step.
 
 
 
 
 
+Additional Abstract details: 
 
-Part1:
-Issues with current system:
-The manual fraud review process by operations has multiple steps and it takes around 6 to 10 mins to review each transaction
-Need a better queue management for ops team to prioritise and work on alerts
-Volumes are forecasted to grow each year and ops team is unable to complete the review for entire volume and Managing the net operating fraud losses
-Less visibility into the work progress and queue penetration
-
-Part2:
-Difficulty in introducing new changes
-Downtime for introducing new changes
-
-Part3:
-Time gap between action disposition vs communicating the same to dependency teams.
-
-Solution:
----------
-Part1:
-Automate the manual workflow steps like to enrich, take certain actions
-Automate the decision process , listing out the red flags and recommend the decision
-Refer to notes generator they currently use
-
-Part2:
-Customized log level details as per application need - Audit level, Info level
-Online BPMN Migration - 0 downtime
-Online DMN Migration - 0 downtime
-Can be handled by the client without developer's intervention - Easy to understand, adapt and modify.
-Inbuilt retry mechanisms, and 
-
-Part3:
-When few actions are taken and informed to downstreams but the actions are not required anymore - compensatory activities for rollback.
-
-
-
-Details:
---------
-Identify the workflows:  Analyse and identify the current manual steps, decision points and actions involved in working a fraud case manually by ops team. Some of the activities like Customer profiling - reviewing the customer details, account and transaction history and online activity, and in some cases recipient profiling. All of these information can be prefetched and to decisions some of the activities as red flags. Actions like restrict, block profile, hold, release , letters, customer contact.
-Model the BPMN workflow: work  with business to document the various workflow steps
-Configure workflow execution:  orchestrate the workflow with connectors to the APIs, micro services, user tasks
-Handle user tasks:
-Implement Automated Activities: Automate certain activities in fraud case review like data enrichment, determine the red flags, integrate with external services for actions like customer contact/restrict/block/hold based on the outcome of the decision. These are implemented in Camunda as service tasks.
-Handle Decision Making:
 Monitor and Track workflow: Camunda provides a monitoring and tracking interface to monitor the execution of workflows and track the progress of individual cases. You can use the Camunda Cockpit application to visualize the workflow instances, check their status, and analyze performance metrics.
 Additionally, Camunda generates historical data and audit trails, allowing you to analyze the workflow's execution, identify bottlenecks, and optimize the process over time
 Handle exceptions and retries: During the execution of the fraud case management workflow, exceptions or errors may occur. Camunda provides mechanisms to handle these scenarios.
 For example, if an error occurs during an automated activity, Camunda can retry the activity a certain number of times before raising an exception. You can configure error handling, retries, and escalation mechanisms within the workflow to ensure robustness.
-
-
 
