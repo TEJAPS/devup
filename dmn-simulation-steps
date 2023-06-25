@@ -1,0 +1,42 @@
+Here are the steps for DMN simulation:
+
+Step 1: Open the following page: https://consulting.camunda.com/dmn-simulator/
+
+Step 2: Select the "Dish" DMN and replace the name with "Risk Calculator":
+   2.1: Provide the input as "region" with the data type as "string".
+   2.2: Provide the input as "amount" with the type as "long".
+   2.3: Set the hit policy to "UNIQUE".
+   
+Step 3: Create an output named "riskscore" with the type "long" and provide annotations for self-explanatory purposes. Then, click on "View DRD" to go back to the Decision Requirements Diagram (DRD).
+
+Step 4: Provide the following records:
+   region, amount, riskscore
+   country1, [0..100], 5
+   country2, [0..1000[, 6
+   country3, [0..500], 7
+   country1, >100, 8
+   country2, >=1000, 9
+   country3, >500, 10
+   
+Step 5: Select the "Beverage" DMN and replace the name with "Queue Assignment":
+   5.1: Provide the input as "riskscore" with the data type as "long".
+   5.2: Provide the input as "transactiontype" with the type as "string".
+   5.3: Update the hit policy to "FIRST". At the same time, explain the other hit policies: "UNIQUE", "FIRST", "PRIORITY", "ANY", "COLLECT", "COLLECT(SUM)", "COLLECT(MIN)", "COLLECT(MAX)", "COLLECT(COUNT)", "RULE ORDER", "OUTPUT ORDER".
+
+Step 6: Create an output named "queue" with the type "integer" and provide annotations for self-explanatory purposes. Then, click on "View DRD" to go back to the Decision Requirements Diagram (DRD).
+
+Step 7: Provide the following records:
+   riskscore, transactiontype, queue
+   <7, "type1","type2","type3", 1
+   [7..9], "type1","typ2", 2
+   >=10, "type3", 3
+   [7..9], "type3", 4
+   >=10, "type2", 4
+   >=10, "type1", 5
+   1, "type1", 4
+   Click on "View DRD" to generate the output.
+
+Step 7: Provide the definition name as "Risk Cal" and click on "DRD" to view the output diagram.
+
+Step 8: Provide input notations to our "Risk Cal" as "Region" and "Amount" with an Oval Symbol to showcase the flow of logic.
+and similarly provide Oval annotations input to Queue Assignment as "Type of transaction"

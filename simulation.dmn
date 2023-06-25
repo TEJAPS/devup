@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="dinnerDecisions" name="Dinner Decisions" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
+  <decision id="beverages" name="Risk Calculator">
+    <informationRequirement id="InformationRequirement_1h4ndk0">
+      <requiredInput href="#InputData_0rin549" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1aw7dye">
+      <requiredInput href="#InputData_1axnom3" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_1snwgon">
+      <requiredAuthority href="#KnowledgeSource_0b8hnqo" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_07q05jb">
+      <input id="InputClause_1acmlkd" label="Region">
+        <inputExpression id="LiteralExpression_0bqgrlg" typeRef="string">
+          <text>region</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0bo3uen" label="Amount" biodi:width="192" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0d6l79o" typeRef="long">
+          <text>amount</text>
+        </inputExpression>
+      </input>
+      <output id="OuputClause_99999" label="riskscore" name="riskscore" typeRef="long" biodi:width="192" />
+      <rule id="row-506282952-7">
+        <description>Tough Stuff</description>
+        <inputEntry id="UnaryTests_03g3ci0">
+          <text>"country1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jb8hau">
+          <text>[0..100]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kr45vj">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-8">
+        <inputEntry id="UnaryTests_1ckv0bb">
+          <text>"country2"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1joyits">
+          <text>[0..1000[</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_139n7gl">
+          <text>6</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-9">
+        <inputEntry id="UnaryTests_05rspiy">
+          <text>"country3"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15yl6ki">
+          <text>[0..500]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bzfo47">
+          <text>7</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-10">
+        <inputEntry id="UnaryTests_0mk75lc">
+          <text>"country1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18uxmko">
+          <text>&gt; 100</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00nwn3e">
+          <text>8</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-11">
+        <inputEntry id="UnaryTests_11o8pqj">
+          <text>"country2"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1298ow3">
+          <text>&gt;= 1000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z18erz">
+          <text>9</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-12">
+        <inputEntry id="UnaryTests_0shocr0">
+          <text>"country3"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nblyrk">
+          <text>&gt; 500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s2fq8r">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="dish" name="Queue Assignment">
+    <informationRequirement id="InformationRequirement_0xtcegt">
+      <requiredInput href="#InputData_0pgvdj9" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0ftj97n">
+      <requiredDecision href="#beverages" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_040j91i" hitPolicy="FIRST">
+      <input id="InputClause_0bbq1z8" label="riskscore" biodi:width="192" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1iwaqcz" typeRef="long">
+          <text>riskscore</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pcbpc9" label="transactiontype" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1uu3xe6" typeRef="string">
+          <text>transactionType</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0lfar1z" label="queue" name="queue" typeRef="integer" />
+      <rule id="row-884555325-1">
+        <description>Queue1</description>
+        <inputEntry id="UnaryTests_0cy7usy">
+          <text>&lt; 7</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ww352f">
+          <text>"type1","type2","type3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07xyqqp">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-1">
+        <description>Queue2</description>
+        <inputEntry id="UnaryTests_06z2ju4">
+          <text>[7..9]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ph5qbt">
+          <text>"type2","type1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sntjhd">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-2">
+        <description>Queue3</description>
+        <inputEntry id="UnaryTests_0o5o0mm">
+          <text>&gt;= 10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rtyr8x">
+          <text>"type3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15nybba">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-3">
+        <inputEntry id="UnaryTests_1f00omt">
+          <text>[7..9]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03yxt5d">
+          <text>"type3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ki86jo">
+          <text>4</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-4">
+        <description></description>
+        <inputEntry id="UnaryTests_18csep1">
+          <text>&gt;= 10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lt4o3q">
+          <text>"type2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h969t1">
+          <text>4</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-5">
+        <description></description>
+        <inputEntry id="UnaryTests_0cp9scy">
+          <text>&gt;= 10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1to1xxg">
+          <text>"type1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fjt4uo">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-6">
+        <description></description>
+        <inputEntry id="UnaryTests_0s5azk4">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nuzyri">
+          <text>"type1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nspzk1">
+          <text>4</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0rin549" name="Region" />
+  <inputData id="InputData_1axnom3" name="Amount" />
+  <inputData id="InputData_0pgvdj9" name="Type of transaction?" />
+  <knowledgeSource id="KnowledgeSource_0b8hnqo" name="Risk Calculator" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_0i21c0s">
+      <dmndi:DMNShape id="DMNShape_0a1lk6d" dmnElementRef="beverages">
+        <dc:Bounds height="80" width="180" x="370" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0rz3blq" dmnElementRef="dish">
+        <dc:Bounds height="80" width="180" x="510" y="86" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_00sc46j" dmnElementRef="InputData_0rin549">
+        <dc:Bounds height="45" width="125" x="296" y="399" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_095ntfb" dmnElementRef="InputData_1axnom3">
+        <dc:Bounds height="45" width="125" x="519" y="401" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0aea4xy" dmnElementRef="InputData_0pgvdj9">
+        <dc:Bounds height="45" width="125" x="650" y="257" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0bugmbv" dmnElementRef="KnowledgeSource_0b8hnqo">
+        <dc:Bounds height="63" width="100" x="130" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1y9bd67" dmnElementRef="InformationRequirement_1h4ndk0">
+        <di:waypoint x="359" y="399" />
+        <di:waypoint x="430" y="340" />
+        <di:waypoint x="430" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_05w9zgm" dmnElementRef="InformationRequirement_1aw7dye">
+        <di:waypoint x="582" y="401" />
+        <di:waypoint x="490" y="340" />
+        <di:waypoint x="490" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_06ho52o" dmnElementRef="AuthorityRequirement_1snwgon">
+        <di:waypoint x="230" y="280" />
+        <di:waypoint x="370" y="280" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0hmw79w" dmnElementRef="InformationRequirement_0xtcegt">
+        <di:waypoint x="713" y="257" />
+        <di:waypoint x="630" y="186" />
+        <di:waypoint x="630" y="166" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0fusg38" dmnElementRef="InformationRequirement_0ftj97n">
+        <di:waypoint x="460" y="240" />
+        <di:waypoint x="570" y="186" />
+        <di:waypoint x="570" y="166" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
