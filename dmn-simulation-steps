@@ -1,49 +1,42 @@
-step1: Open this page : https://consulting.camunda.com/dmn-simulator/
-step2: select Dish dmn and replace name as risk calcluator:
-	2.1: provide input as region and data type as string.
-	2.2: provide input as amount and type as long.
-	2.3: let hit policy be "UNIQUE"
-	
-step3: create output with name riskscore of type long
-provide annotations for self explanatory
-come back to DRD by clicking on view drd
+Here are the steps for DMN simulation:
 
-step4: provide records:
-region, amount, riskscore
-country1, [0..100], 5
-country2, [0..1000[, 6
-country3, [0..500], 7
-country1, >100, 8
-country2, >=1000, 9
-country3, >500, 10
+Step 1: Open the following page: https://consulting.camunda.com/dmn-simulator/
 
-step5: select Beverage dmn and replace name as queue assignment:
-	5.1: provide input as riskscore and data type as long.
-	5.2: provide input as transactiontype and type as string.
-	5.3 update hit policy as "FIRST"
-same time explaining about other policies: unique, first, priority, any, collect, collect(sum), collect(min), collect(max), collect(count), rule order, output order
+Step 2: Select the "Dish" DMN and replace the name with "Risk Calculator":
+   2.1: Provide the input as "region" with the data type as "string".
+   2.2: Provide the input as "amount" with the type as "long".
+   2.3: Set the hit policy to "UNIQUE".
+   
+Step 3: Create an output named "riskscore" with the type "long" and provide annotations for self-explanatory purposes. Then, click on "View DRD" to go back to the Decision Requirements Diagram (DRD).
 
-step6: create output with name queue of type integer
-provide annotations for self explanatory
-come back to DRD by clicking on view drd
+Step 4: Provide the following records:
+   region, amount, riskscore
+   country1, [0..100], 5
+   country2, [0..1000[, 6
+   country3, [0..500], 7
+   country1, >100, 8
+   country2, >=1000, 9
+   country3, >500, 10
+   
+Step 5: Select the "Beverage" DMN and replace the name with "Queue Assignment":
+   5.1: Provide the input as "riskscore" with the data type as "long".
+   5.2: Provide the input as "transactiontype" with the type as "string".
+   5.3: Update the hit policy to "FIRST". At the same time, explain the other hit policies: "UNIQUE", "FIRST", "PRIORITY", "ANY", "COLLECT", "COLLECT(SUM)", "COLLECT(MIN)", "COLLECT(MAX)", "COLLECT(COUNT)", "RULE ORDER", "OUTPUT ORDER".
 
-step7: provide records:
-riskscore, transactiontype, queue
-<7, "type1","type2","type3", 1
-[7..9], "type1","typ2", 2
->=10, "type3", 3
-[7..9], "type3", 4
->=10, "type2", 4
->=10, "type1", 5
-1, "type1", 4
-click view DRD
+Step 6: Create an output named "queue" with the type "integer" and provide annotations for self-explanatory purposes. Then, click on "View DRD" to go back to the Decision Requirements Diagram (DRD).
 
-output is generated 
-provide the values and click simulate now
-to see the output.
+Step 7: Provide the following records:
+   riskscore, transactiontype, queue
+   <7, "type1","type2","type3", 1
+   [7..9], "type1","typ2", 2
+   >=10, "type3", 3
+   [7..9], "type3", 4
+   >=10, "type2", 4
+   >=10, "type1", 5
+   1, "type1", 4
+   Click on "View DRD" to generate the output.
 
+Step 7: Provide the definition name as "Risk Cal" and click on "DRD" to view the output diagram.
 
-step7: provide definition name as risk cal and click DRD to view our output diagram
-
-step8: provide input notations to our riskcal as
-Region and Amount with Oval Symbol to showcase flow of logic 
+Step 8: Provide input notations to our "Risk Cal" as "Region" and "Amount" with an Oval Symbol to showcase the flow of logic.
+and similarly provide Oval annotations input to Queue Assignment as "Type of transaction"
