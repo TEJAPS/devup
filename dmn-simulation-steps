@@ -1,0 +1,49 @@
+step1: Open this page : https://consulting.camunda.com/dmn-simulator/
+step2: select Dish dmn and replace name as risk calcluator:
+	2.1: provide input as region and data type as string.
+	2.2: provide input as amount and type as long.
+	2.3: let hit policy be "UNIQUE"
+	
+step3: create output with name riskscore of type long
+provide annotations for self explanatory
+come back to DRD by clicking on view drd
+
+step4: provide records:
+region, amount, riskscore
+country1, [0..100], 5
+country2, [0..1000[, 6
+country3, [0..500], 7
+country1, >100, 8
+country2, >=1000, 9
+country3, >500, 10
+
+step5: select Beverage dmn and replace name as queue assignment:
+	5.1: provide input as riskscore and data type as long.
+	5.2: provide input as transactiontype and type as string.
+	5.3 update hit policy as "FIRST"
+same time explaining about other policies: unique, first, priority, any, collect, collect(sum), collect(min), collect(max), collect(count), rule order, output order
+
+step6: create output with name queue of type integer
+provide annotations for self explanatory
+come back to DRD by clicking on view drd
+
+step7: provide records:
+riskscore, transactiontype, queue
+<7, "type1","type2","type3", 1
+[7..9], "type1","typ2", 2
+>=10, "type3", 3
+[7..9], "type3", 4
+>=10, "type2", 4
+>=10, "type1", 5
+1, "type1", 4
+click view DRD
+
+output is generated 
+provide the values and click simulate now
+to see the output.
+
+
+step7: provide definition name as risk cal and click DRD to view our output diagram
+
+step8: provide input notations to our riskcal as
+Region and Amount with Oval Symbol to showcase flow of logic 
